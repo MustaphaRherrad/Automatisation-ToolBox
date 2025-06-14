@@ -1,0 +1,11 @@
+# Fichiers à ignorer
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.csv
+.ipynb_checkpoints/
+.env
+*.sqlite3
+.DS_Store
+prompt-ia.txt
