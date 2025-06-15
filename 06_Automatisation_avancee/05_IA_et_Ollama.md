@@ -10,6 +10,8 @@ L'installation d'Ollama est simple et dépend de votre système d'exploitation.
 2.  **Exécutez l'installateur :** Ouvrez le fichier `.exe` téléchargé et suivez les instructions. L'installation est généralement très simple, comme pour un logiciel standard.
 3.  **Vérifiez l'installation :** Ouvrez PowerShell ou l'Invite de commandes et tapez `ollama --version`. Si vous voyez un numéro de version, Ollama est bien installé.
 
+**NB**: l'exécutable a une taille de plus d'un giga.
+
 ### Sur Linux
 
 1.  **Ouvrez un terminal :**
@@ -36,6 +38,7 @@ ollama run llama3
 ```
 
 La première fois que vous exécutez cette commande, Ollama téléchargera le modèle (cela peut prendre un certain temps selon votre connexion internet). Une fois le téléchargement terminé, vous entrerez dans une session de chat avec le modèle.
+**NB** : en la date du [14/06/2025], la teille de llama3 est de 4.7 GB.
 
 Vous pouvez également simplement `pull` un modèle sans le lancer immédiatement :
 
