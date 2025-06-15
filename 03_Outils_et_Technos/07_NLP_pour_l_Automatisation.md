@@ -35,12 +35,12 @@ Comme vous l'avez déjà découvert, **Ollama** est un excellent point de dépar
 
 ```mermaid
 graph TD
-    A[Source de Texte] --> B(Script d'Automatisation Python);
-    B -- Envoie Texte comme Prompt --> C[Ollama (Local)];
+    A[Source de Texte] --> B[(Script d'Automatisation Python)];
+    B -- Envoie Texte comme Prompt --> C[Ollama Local];
     C -- Exécute Modèle LLM --> D{Modèle: Llama 3};
     D -- Génère Résumé/Réponse --> C;
     C -- Renvoie Résultat --> B;
-    B --> E[Action Automatisée (ex: Stockage CSV, Envoi Email)];
+    B --> E[Action Automatisée<br>ex: Stockage CSV, Envoi Email];
 ```
 *Figure 3 : Flux de travail de NLP avec Ollama pour l'automatisation*
 

@@ -19,10 +19,13 @@ L'automatisation de la génération de rapports et de documents suit généralem
 
 ```mermaid
 graph TD
-    A[Collecte Données] --> B(Nettoyage & Traitement);
-    B --> C{Modèle de Document};
-    C -- Merge Données --> D[Document Généré];
-    D -- Export/Distribution --> E[Fichier Final (PDF, Word, Email)];
+    A[Collecte des Données] --> B[Nettoyage & Traitement]
+    B --> C{Modèle de Document}
+    C -- Merge Données --> D[Document Généré]
+    D --> E{Format de Sortie}
+    E -->|PDF| F[Fichier PDF]
+    E -->|Word| G[Document Word]
+    E -->|Email| H[Email Automatisé]
 ```
 *Figure 6 : Flux de travail pour l'automatisation de la génération de rapports et documents*
 

@@ -55,9 +55,14 @@ Une fois que vous avez le contenu HTML d'une page avec `requests`, `BeautifulSou
 
 ```mermaid
 graph TD
-    Ahttps://www.exaloop.io/blog/pycon-2024 --> B(Requête GET avec `requests`);
-    B -- Réponse HTTP (HTML) --> C(Parsing HTML avec `BeautifulSoup`);
-    C -- Extraction Données (Sélecteurs CSS) --> D[Données Structurées (Titre, Lien)];
+    A["https://www.exaloop.io/blog/pycon-2024"] --> B(Requête GET avec requests)
+    B -- "Réponse 200 (HTML)" --> C(Parsing avec BeautifulSoup)
+    C -- "Sélecteurs CSS/XPath" --> D[["Données Structurées<br>(Titre, Auteur, Date, Lien)"]]
+
+    style A fill:#E3F2FD,stroke:#42A5F5
+    style B fill:#FFF3E0,stroke:#FFA726
+    style C fill:#E8F5E9,stroke:#66BB6A
+    style D fill:#F3E5F5,stroke:#AB47BC
 ```
 *Figure 8 : Flux de Web Scraping Statique avec `requests` et `BeautifulSoup`*
 

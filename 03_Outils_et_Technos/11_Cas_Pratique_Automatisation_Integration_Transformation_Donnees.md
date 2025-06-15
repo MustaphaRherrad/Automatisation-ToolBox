@@ -12,16 +12,17 @@ L'intégration et la transformation de données (souvent appelée ETL - Extract,
 
 ```mermaid
 graph LR
-    subgraph Source de Données
-        A[Fichiers CSV/Excel] --> E;
-        B[Bases de Données (SQL/NoSQL)] --> E;
-        C[APIs Web] --> E;
-        D[Scraping Web] --> E;
+    subgraph Source
+        A[CSV/Excel] --> E
+        B[BDD] --> E
+        C[API] --> E
+        D[Scraping] --> E
     end
-
-    E[Extraction (E)] --> F[Transformation (T)];
-    F --> G[Chargement (L)];
-    G --> H[Destination (Data Warehouse, Base de Données, Rapport)];
+    E[Extraction] --> F[Transformation]
+    F --> G[Chargement]
+    G --> H[Data Warehouse]
+    G --> I[Base de Données]
+    G --> J[Rapports]
 ```
 *Figure 7 : Cycle Extract, Transform, Load (ETL)*
 

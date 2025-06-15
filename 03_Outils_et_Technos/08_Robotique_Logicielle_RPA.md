@@ -20,14 +20,19 @@ Un robot RPA apprend un processus en observant un utilisateur l'exécuter, ou en
 
 ```mermaid
 graph TD
-    A[Processus Manuel Répétitif] --> B{Analyser et Définir les Étapes};
-    B --> C[Outil RPA];
-    C -- Designer / Enregistreur --> D[Robot RPA (Workflow)];
-    D -- Exécute --> E[Application A (ex: Excel)];
-    D -- Exécute --> F[Application B (ex: CRM)];
-    D -- Exécute --> G[Application C (ex: Navigateur Web)];
-    E & F & G -- Interaction GUI --> H[Données Traitées / Tâche Accomplie];
-    D -- Reporting --> I[Log / Statistiques d'Exécution];
+    A[Processus Manuel Répétitif] --> B{Analyse et Modélisation};
+    B --> C[Enregistrement/Conception dans l'Outil RPA];
+    C --> D[Création du Workflow Automatisé];
+    D --> E[Exécution par le Robot RPA];
+    E --> F[Interaction avec les Applications];
+    F -->|Lecture/Écriture| G[Excel];
+    F -->|Saisie/Extraction| H[CRM];
+    F -->|Navigation/Scraping| I[Site Web];
+    G & H & I --> J[Données Traitées];
+    E --> K[Gestion des Exceptions];
+    J --> L[Rapports/Export];
+    K -->|Si erreur| D;
+    L --> M[Base de Données/Email];
 ```
 *Figure 4 : Cycle de vie d'un processus RPA*
 

@@ -217,20 +217,25 @@ if __name__ == "__main__":
 
 ```mermaid
 graph TD
-    subgraph Surveillance Loop (Scheduler: Cron/Task Scheduler)
-        A[Démarrage Script check_service.py]
+    subgraph "Surveillance (Scheduler: Cron/Task Scheduler)"
+        A([Démarrage du Script]) --> B{Requête HTTP GET<br>vers SERVICE_URL}
     end
 
-    A --> B{Requête HTTP à SERVICE_URL};
-    B -- Succès (Code 200) --> C[Log: "Service OK"];
-    B -- Échec (Timeout/Erreur HTTP) --> D[Log: "Service NOK"];
+    B -- "Succès (200-299)" --> C["Log: 'Service OK'<br>+ Horodatage"]
+    B -- "Échec (Timeout/4xx/5xx)" --> D["Log: 'Service NOK'<br>+ Code Erreur"]
 
-    D --> E[Appel Ollama pour générer alerte];
-    E -- Message d'Alerte --> F[Email : Objet="ALERTE", Corps="Message généré par Ollama"];
-    F -- Envoi SMTP --> G[Boîte Mail Destinataire];
-    G -- Log --> C[Log: "Email envoyé/échec"];
+    D --> E[Génération Alerte<br>via Ollama]
+    E --> F{Envoi Email}
+    F -- Succès --> G["Log: 'Alerte envoyée à<br>EMAIL_RECEIVER'"]
+    F -- Échec --> H["Log: 'Échec envoi email'<br>+ Erreur SMTP"]
 
-    C --> H[Fin d'exécution];
+    C & G & H --> I([Fin du Cycle])
+    I -->|Prochaine Exécution| A
+
+    style A fill:#4CAF50,stroke:#388E3C
+    style B fill:#2196F3,stroke:#0b7dda
+    style D fill:#FF5722,stroke:#e64a19
+    style F fill:#9C27B0,stroke:#7b1fa2
 ```
 *Figure 5 : Diagramme de flux du cas pratique de surveillance et notification*
 

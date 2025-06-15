@@ -66,12 +66,15 @@ Le module `subprocess` est la manière **recommandée** et la plus moderne d'ex�
 
 ```mermaid
 graph TD
-    A[Script Python] --> B{subprocess.run()};
-    B -- Exécute --> C[Commande Externe (ex: `git pull`)];
-    C -- Stdout/Stderr --> B;
-    C -- Code de Retour --> B;
-    B -- Capture Sortie --> D[Variable Python (`result.stdout`)];
-    B -- Gère Code de Retour --> E[Log Erreur / Continue le Workflow];
+    A[Script Python] --> B[subprocess.run]
+    B --> C[Commande Externe]
+    C --> B
+    B --> D[Capture stdout/stderr]
+    B --> E{Vérification Code Retour}
+    E -->|0| F[Log Succès]
+    E -->|≠0| G[Log Erreur]
+    F --> H[Workflow]
+    G --> H
 ```
 *Figure 10 : Interaction avec la ligne de commande via `subprocess.run()`*
 

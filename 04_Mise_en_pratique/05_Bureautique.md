@@ -38,10 +38,19 @@ Python dispose d'excellentes bibliothèques pour interagir avec les principaux f
 
 ```mermaid
 graph TD
-    A[Fichier Excel Source] --> B(Script Python avec `openpyxl`);
-    B -- Lire Données --> C{DataFrame Pandas (Optionnel)};
-    C -- Traitement/Calculs --> D[Données Transformées];
-    D -- Écrire Données --> E[Nouveau/Mis à Jour Fichier Excel];
+    A[["Fichier Excel<br>(Source.xlsx)"]] --> B[[Script Python<br>openpyxl/pandas]]
+    B --> C{L'utilisation de<br>DataFrame Pandas ?}
+    C -->|Oui| D[["Traitement avec<br>pandas"]]
+    C -->|Non| E[["Traitement direct<br>openpyxl"]]
+    D & E --> F[["Données Transformées"]]
+    F --> G[["Fichier Excel<br>(Output.xlsx)"]]
+
+    %% Styles optionnels
+    class A,G orange
+    class B blue
+    class C question
+    class D,E green
+    class F yellow
 ```
 *Figure 12 : Flux d'automatisation Excel avec `openpyxl`*
 

@@ -64,15 +64,20 @@ Pour des scripts exécutés localement, des interactions simples peuvent suffire
 
 ```mermaid
 graph TD
-    A[Script d'Automatisation] --> B(Génération de Données / Résultats);
-    B -- Notification d'Erreur --> C{Canaux de Communication};
-    B -- Rapport de Succès --> C;
-    B -- Diffusion d'Infos --> C;
+    A[["Script d'Automatisation"]] --> B{Génération de Données}
+    B -->|Notification d'Erreur| C[Canaux de Communication]
+    B -->|Rapport de Succès| C
+    B -->|Diffusion d'Infos| C
 
-    C --> D[Email (smtplib, email)];
-    C --> E[Messagerie Équipe (Slack, Teams)];
-    C --> F[Fichiers/Rapports (CSV, PDF)];
-    C --> G[Notifications Desktop (Plyer)];
+    C --> D[[Email]]
+    C --> E[[Messagerie]]
+    C --> F[[Fichiers]]
+    C --> G[[Desktop]]
+
+    %% Styles optionnels (valides)
+    class A,B,C,D,E,F,G default
+    class A,B rounded
+    class D,E,F,G double
 ```
 *Figure 11 : Canaux de communication pour l'automatisation*
 
